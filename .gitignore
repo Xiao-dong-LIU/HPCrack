@@ -1,0 +1,15 @@
+# ignore build files
+build/
+# ignore output files
+Output/
+Time_step_data/
+*.dat
+# ignore executable
+program
+# ignore . ..
+.
+..
+.vscode/*
+*.txt
+*.sh
+*.out
