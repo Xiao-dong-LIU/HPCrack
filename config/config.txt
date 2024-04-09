@@ -1,0 +1,43 @@
+# Parameters configuration file
+
+# Problem dimension
+D=3
+
+# Number of processors in each direction
+np=1,1,1
+
+# Beginning voxel position
+X_start=-64,-64,-64
+
+# Image file name 
+IMGname=data/inclusion_more_129_129_129.raw
+
+# Number of voxels in each direction in the image
+voxel_nb_X=129
+voxel_nb_Y=129
+voxel_nb_Z=129
+
+# Number of elements on the coarsest grid
+element_nb=4,4,4
+
+# ROI setting (image)
+ROI_start_X=0
+ROI_start_Y=0
+ROI_start_Z=0
+
+# Voxel size (in meters)
+voxel_size=2.53e-6
+
+# Multigrid cycle parameters for computing u (mechanical part)
+ncy_u=12
+nu0_u=50
+nu1_u=4
+nu2_u=2
+gamma_u=1
+
+# Multigrid cycle parameters for computing d (phase field part)
+ncy_d=12
+nu0_d=10
+nu1_d=2
+nu2_d=1
+gamma_d=1

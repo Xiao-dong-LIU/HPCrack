@@ -10,6 +10,5 @@ program
 .
 ..
 .vscode/*
-*.txt
 *.sh
 *.out
