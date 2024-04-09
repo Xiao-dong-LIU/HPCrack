@@ -18,7 +18,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "output_result.h"
 #include "mg.h"
 #include "mpi_free.h"
-#include "parameter.h"
+#include "parameters_config.h"
 
 
 using namespace std;
@@ -32,11 +32,14 @@ int main(int argc, char * argv[]){
 	MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &level_mpi_provided);
 	MPI_Comm_size(MPI_COMM_WORLD,&nbprocs);
 	MPI_Comm_rank(MPI_COMM_WORLD,&myid);
+	Parameters para;
+	para.readFromFile("config/config.txt");
+
 	///------------ Verification of MPI topology
 	int np_prod=1;
-	for (int d=0;d<np.size();d++)
+	for (int d=0;d<para.np.size();d++)
 		{
-			np_prod*=np[d];
+			np_prod*=para.np[d];
 		}
 	if(np_prod!=nbprocs)
 	{
@@ -46,14 +49,14 @@ int main(int argc, char * argv[]){
 	}
 	///------------ Creation of the Cartesian topology
 	MPI_Setting  M;
-	Set_MPI(&M,np);
+	Set_MPI(&M,para.np);
 	///------------ Compute maxlevel
 	// max MG levels, started by 0 
 	int maxlevel = 0;
 	// NB of element on the finest grid
-    int nb_ele_f = voxel_nb[0] - ROI_start[0] -1;
+    int nb_ele_f = para.IDM.voxelnx - para.IDM.coefxa -1;
 	// NB of element on coarse grid
-	int nb_ele_c = element_nb[0];
+	int nb_ele_c = para.element_nb[0];
 	if (2*nb_ele_c > nb_ele_f)
 		maxlevel = 0;
 	else
@@ -66,18 +69,17 @@ int main(int argc, char * argv[]){
 		}while (nb_ele_c <= nb_ele_f);
 	}
 	///------------ Input setting ------------///
-	inputdomain IDM;
-	input_setting(&IDM, ROI_start, element_nb, voxel_nb, maxlevel);
+	input_setting(para.IDM,  para.element_nb, maxlevel);
 
 	///------------ Initialization  ------------///
     Stack  U;
-    initialize(&U, &IDM, maxlevel, element_nb, X_start ,M);
+    initialize(&U, &para.IDM, maxlevel, para.element_nb, para.X_start ,M);
     ///------------ Image and material setting ------------///
 	mg<double> bulK(&U,maxlevel);   /// bulK modulus
 	mg<double> G(&U,maxlevel);		/// shear modulus G
 	mg<double> gc(&U,maxlevel);		/// gc
 	///------------ Assigne material property 
-	input_total(&U,bulK,G,gc,M,IDM,IMGname,voxel_size);
+	input_total(&U,bulK,G,gc,M,para.IDM,para.IMGname,para.voxel_size);
 
 	///------------ Output material property
 	for (int j=maxlevel;j<=maxlevel;j++)
@@ -86,17 +88,13 @@ int main(int argc, char * argv[]){
 		write_total_de(&U,gc.getLevel(j),M,"S","gc","gc",j,myid,nbprocs,0);
 		write_total_de(&U,G.getLevel(j),M,"S","G","G",j,myid,nbprocs,0);
 	}
-	/// ----------- MG cycle parameter setting
-	MG mgp_u;
-	mg_parameter(mgp_u,nu0_u,nu1_u,nu2_u,gamma_u,ncy_u);
-	MG mgp_d;
-	mg_parameter(mgp_d,nu0_d,nu1_d,nu2_d,gamma_d,ncy_d);
+	/// ----------- lc of phase field 
 	Level *L;
 	L=U.Ll+maxlevel;
 	double lc=L->hz*3.0;
 
  	double t1 = MPI_Wtime();      /// get start time
-	phm(&U,bulK,G,gc,M,mgp_u,mgp_d,lc,myid,nbprocs,voxel_size);
+	phm(&U,bulK,G,gc,M,para.mg_u,para.mg_d,lc,myid,nbprocs,para.voxel_size);
 	/// get final time
 	double t2 = MPI_Wtime();
 	double t = t2-t1;

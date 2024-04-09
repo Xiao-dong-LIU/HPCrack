@@ -19,21 +19,14 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "CSV_read.h"
 
 
-void input_setting(inputdomain *IDM, vector <int> const& ROI_start,
-vector <int> const& element_nb, vector <int> const& voxel_nb, const int maxlevel)
+void input_setting(inputdomain & IDM, vector <int> const& element_nb, const int maxlevel)
 /// Function to define the imput domian of image, x0,y0,z0 are the start voxel position
 /// nx0, ny0, nz0 are the number of elements on the coarest grid 
 /// _voxelnx, _voxelny, _voxelnz NB of voxels in image
 {
-	IDM->coefxa = ROI_start[0]; 
-	IDM->coefxb = ROI_start[0]+element_nb[0]*pow(2,maxlevel);			///end of domain in X, start by 0
-    IDM->coefya = ROI_start[1];									///begin of domain in Y, start by 0
-    IDM->coefyb = ROI_start[1]+element_nb[1]*pow(2,maxlevel);			///end of domain in Y, start by 0
-    IDM->coefza = ROI_start[2];									///begin of domain in Z, start by 0
-    IDM->coefzb = ROI_start[2]+element_nb[2]*pow(2,maxlevel);			///end of domain in Z, start by 0
-    IDM->voxelnx = voxel_nb[0];
-    IDM->voxelny = voxel_nb[1];
-    IDM->voxelnz = voxel_nb[2];
+	IDM.coefxb = IDM.coefxa+element_nb[0]*pow(2,maxlevel);			///end of domain in X, start by 0
+    IDM.coefyb = IDM.coefya+element_nb[1]*pow(2,maxlevel);			///end of domain in Y, start by 0
+    IDM.coefzb = IDM.coefza+element_nb[2]*pow(2,maxlevel);			///end of domain in Z, start by 0
 }
 
 

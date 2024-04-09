@@ -17,8 +17,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 using namespace std;
 
 
-void input_setting(inputdomain *IDM,  vector <int> const& ROI_start, vector <int> const& element_nb, 
-vector <int> const& voxel_nb,  const int maxlevel);
+void input_setting(inputdomain & IDM, vector <int> const& element_nb, const int maxlevel);
 ///------------ raed gray level from image 
 void input(grid <short>  & coef3d, const inputdomain & IDM, const MPI_Setting & M, 
  const string & filename);
