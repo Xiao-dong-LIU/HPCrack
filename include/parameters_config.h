@@ -20,6 +20,7 @@ struct Parameters {
     MG mg_u;
     MG mg_d;
     inputdomain IDM;
+    int outK,outG,outgc;
 
     // Function to read parameters from a file
     void readFromFile(const string& filename);

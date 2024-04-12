@@ -30,9 +30,7 @@ void Parameters::readFromFile(const string& filename) {
                     IDM.voxelny = stod(value);
                 } else if (key == "voxel_nb_Z") {
                     IDM.voxelnz = stod(value);
-                } else if (key == "element_nb") {
-                     parseVector(value, element_nb);
-                }  else if (key == "ROI_start_X") {
+                } else if (key == "ROI_start_X") {
                     IDM.coefxa = stod(value);
                 } else if (key == "ROI_start_Y") {
                     IDM.coefya = stod(value);
@@ -40,6 +38,8 @@ void Parameters::readFromFile(const string& filename) {
                     IDM.coefza = stod(value);
                 } else if (key == "voxel_size") {
                     voxel_size = stod(value);
+                } else if (key == "element_nb") {
+                     parseVector(value, element_nb);
                 } else if (key == "ncy_u") {
                     mg_u.ncy = stoi(value);
                 } else if (key == "nu0_u") {
@@ -60,6 +60,12 @@ void Parameters::readFromFile(const string& filename) {
                     mg_d.nu2 = stoi(value);
                 } else if (key == "gamma_d") {
                     mg_d.gamma = stoi(value);
+                } else if (key == "outK") {
+                    outK = stoi(value);
+                } else if (key == "outG") {
+                    outG = stoi(value);
+                } else if (key == "outgc") {
+                    outgc = stoi(value);
                 }
                 // Add parsing for other parameters here
             }

@@ -82,16 +82,17 @@ int main(int argc, char * argv[]){
 	input_total(&U,bulK,G,gc,M,para.IDM,para.IMGname,para.voxel_size);
 
 	///------------ Output material property
-	for (int j=maxlevel;j<=maxlevel;j++)
-	{
-		write_total_de(&U,bulK.getLevel(j),M,"S","bulK","bulK",j,myid,nbprocs,0);
-		write_total_de(&U,gc.getLevel(j),M,"S","gc","gc",j,myid,nbprocs,0);
-		write_total_de(&U,G.getLevel(j),M,"S","G","G",j,myid,nbprocs,0);
-	}
+	if (para.outK==1)
+		write_total_de(&U,bulK.getLevel(maxlevel),M,"S","bulK","bulK",maxlevel,myid,nbprocs,0);
+	if (para.outK==1)
+		write_total_de(&U,gc.getLevel(maxlevel),M,"S","gc","gc",maxlevel,myid,nbprocs,0);
+	if (para.outK==1)
+		write_total_de(&U,G.getLevel(maxlevel),M,"S","G","G",maxlevel,myid,nbprocs,0);
 	/// ----------- lc of phase field 
 	Level *L;
 	L=U.Ll+maxlevel;
 	double lc=L->hz*3.0;
+	if(myid==0) cout<< "lc="<<lc<<endl;
 
  	double t1 = MPI_Wtime();      /// get start time
 	phm(&U,bulK,G,gc,M,para.mg_u,para.mg_d,lc,myid,nbprocs,para.voxel_size);

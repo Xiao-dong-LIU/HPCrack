@@ -3,9 +3,13 @@
 # Problem dimension
 D=3
 
+# ########## MPI tasks ##########
+
 # Number of processors in each direction
 np=1,1,1
 
+
+# ########## Image ##########
 # Beginning voxel position
 X_start=-64,-64,-64
 
@@ -17,9 +21,6 @@ voxel_nb_X=129
 voxel_nb_Y=129
 voxel_nb_Z=129
 
-# Number of elements on the coarsest grid
-element_nb=4,4,4
-
 # ROI setting (image)
 ROI_start_X=0
 ROI_start_Y=0
@@ -28,6 +29,12 @@ ROI_start_Z=0
 # Voxel size (in meters)
 voxel_size=2.53e-6
 
+# ########## Finite element ##########
+# Number of elements on the coarsest grid
+element_nb=4,4,4
+
+
+# ########## Multigrid ##########
 # Multigrid cycle parameters for computing u (mechanical part)
 ncy_u=12
 nu0_u=50
@@ -41,3 +48,16 @@ nu0_d=10
 nu1_d=2
 nu2_d=1
 gamma_d=1
+
+
+# ########## Phase field ##########
+
+
+
+
+
+# ########## Output control ##########
+# VTK for material properties, 1: active, 0: desactive
+outK=1;
+outG=0;
+outgc=0;

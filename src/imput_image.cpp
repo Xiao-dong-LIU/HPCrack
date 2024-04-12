@@ -136,8 +136,6 @@ const inputdomain & IDM, const string & inputfilename, const double voxel_size)
 				double E  = MP[0][position] + (m_coef(i,j,k)-graylevel[position])/(graylevel[position+1]-graylevel[position])*(MP[0][position+1]-MP[0][position]);
 				double nu = MP[1][position] + (m_coef(i,j,k)-graylevel[position])/(graylevel[position+1]-graylevel[position])*(MP[1][position+1]-MP[1][position]);
 				gc(i,j,k) = MP[2][position] + (m_coef(i,j,k)-graylevel[position])/(graylevel[position+1]-graylevel[position])*(MP[2][position+1]-MP[2][position]);
-				if (i==1&&j==1&&k==1)
-				cout << "E="<<E<<" nu="<<nu<<" gc="<<gc(i,j,k)<<endl;
 				E = voxel_size*E;
 				bulK(i,j,k)=1.0/(3.0*(1.0-2.0*nu))*E;
 				G(i,j,k)=1.0/(2.0*(1.0+nu))*E;
