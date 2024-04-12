@@ -55,6 +55,7 @@ int main(int argc, char * argv[]){
 	int maxlevel = 0;
 	// NB of element on the finest grid
     int nb_ele_f = para.IDM.voxelnx - para.IDM.coefxa -1;
+	
 	// NB of element on coarse grid
 	int nb_ele_c = para.element_nb[0];
 	if (2*nb_ele_c > nb_ele_f)
@@ -84,10 +85,11 @@ int main(int argc, char * argv[]){
 	///------------ Output material property
 	if (para.outK==1)
 		write_total_de(&U,bulK.getLevel(maxlevel),M,"S","bulK","bulK",maxlevel,myid,nbprocs,0);
-	if (para.outK==1)
+	if (para.outG==1)
 		write_total_de(&U,gc.getLevel(maxlevel),M,"S","gc","gc",maxlevel,myid,nbprocs,0);
-	if (para.outK==1)
+	if (para.outgc==1)
 		write_total_de(&U,G.getLevel(maxlevel),M,"S","G","G",maxlevel,myid,nbprocs,0);
+
 	/// ----------- lc of phase field 
 	Level *L;
 	L=U.Ll+maxlevel;

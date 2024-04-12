@@ -23,8 +23,8 @@ vector <double> const& X_start, const MPI_Setting &M)
   double ya = X_start[1];
   double za = X_start[2];
   double xb = xa + IDM->coefxb;
-  double yb = yb + IDM->coefyb;
-  double zb = zb + IDM->coefzb;
+  double yb = ya + IDM->coefyb;
+  double zb = za + IDM->coefzb;
   double hx, hy, hz;
   Level *L;
   int ii, jj, kk;
