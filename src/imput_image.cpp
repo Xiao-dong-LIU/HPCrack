@@ -274,10 +274,9 @@ void coarse_VR(mg<double> & MP, MPI_Setting & M)
 }
 
 // ------------- obtain MP on all grids
-void input_total(Stack *U, mg<double> & bulK, mg<double> & G, mg<double> & gc, MPI_Setting & M, 
-const inputdomain & IDM, const string & inputfilename, const double voxel_size)
+void input_total(Stack *U, mg<double> & bulK, mg<double> & G, mg<double> & gc, MPI_Setting & M, Parameters & para)
 {
-	image_MP(U,bulK.getLevel(U->maxlevel),G.getLevel(U->maxlevel),gc.getLevel(U->maxlevel),M,IDM,inputfilename,voxel_size);
+	image_MP(U,bulK.getLevel(U->maxlevel),G.getLevel(U->maxlevel),gc.getLevel(U->maxlevel),M,para.IDM,para.IMGname,para.voxel_size);
 	coarse_VR(bulK,M);
 	coarse_VR(G,M);
 	coarse_VR(gc,M);

@@ -14,16 +14,10 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "mpi_struct.h"
 #include <iostream>
 #include <vector>
+#include "parameters_config.h"
 using namespace std;
 
 /// ------------- initialize values in datastructure
-void initialize(Stack *U, const inputdomain *IDM, const int maxlevel, vector <int> const& element_nb, 
-vector <double> const& X_start, const MPI_Setting &M);
-/*
-///------------initialisation of u,f,d,H------------///
-void init_ufdH(Stack *U, multigrid3d & u, multigrid3d & v, multigrid3d & w,
-			   multigrid3d & fu, multigrid3d & fv, multigrid3d & fw,
-               multigrid3d & d, multigrid3d & fd, multigrid3d & H,
-               int l,MPI_Setting & M);
-*/
+void initialize(Stack *U, const Parameters & para, const MPI_Setting &M, const int maxlevel);
+
 #endif // _initialisation_H

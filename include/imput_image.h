@@ -14,6 +14,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "grid.h"
 #include "mg.h"
 #include "mpi_struct.h"
+#include "parameters_config.h"
 using namespace std;
 
 
@@ -33,6 +34,5 @@ void reuss (grid <double> & MPc, const grid <double> & MPf, const MPI_Setting & 
 // ------------- calculate homogenized MP on coarse grids
 void coarse_VR(mg<double> & MP, MPI_Setting & M);
 // ------------- obtain MP on all grids
-void input_total(Stack *U, mg<double> & bulK, mg<double> & G, mg<double> & gc, 
-MPI_Setting & M, const inputdomain & IDM, const string & inputfilename,const double voxel_size);
+void input_total(Stack *U, mg<double> & bulK, mg<double> & G, mg<double> & gc, MPI_Setting & M, Parameters & para);
 #endif

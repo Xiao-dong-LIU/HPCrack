@@ -27,8 +27,8 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 //------------ the phase field method 
 
-void phm(Stack *U, const mgdouble & bulK, const mgdouble & G, const mgdouble & gc, MPI_Setting & M, 
-const MG & mgp_u, const MG & mgp_d, const double lc, const int myid, const int nbprocs, double voxel_size)
+void phm(Stack *U, const mgdouble & bulK, const mgdouble & G, const mgdouble & gc, MPI_Setting & M, const Parameters & para,
+const int myid, const int nbprocs)
 {
      
     double small_k =1.e-5;
@@ -69,11 +69,11 @@ const MG & mgp_u, const MG & mgp_d, const double lc, const int myid, const int n
         if (myid==0)
         cout<<"***** At Time step "<<t<<endl;
         // ----- compute u
-            u_entire(U,u,fu,bulK,G,d,M,mgp_u,myid,nbprocs,small_k,U_unit,t,f_norm);   
+            u_entire(U,u,fu,bulK,G,d,M,para.mg_u,myid,nbprocs,small_k,U_unit,t,f_norm);   
             if (t==0)
             {
                 Ue=U_e(U,u.getLevel(U->maxlevel),bulK.getLevel(U->maxlevel),G.getLevel(U->maxlevel),
-                gc.getLevel(U->maxlevel),U->maxlevel,lc,M);
+                gc.getLevel(U->maxlevel),U->maxlevel,para.lc,M);
                 Ut=Ue;
                 delta_U=1.5e-3*Ue;
                 if(myid==0)
@@ -82,7 +82,7 @@ const MG & mgp_u, const MG & mgp_d, const double lc, const int myid, const int n
             }
             // ----- compute H
             strain_history(U,H.getLevel(U->maxlevel),u.getLevel(U->maxlevel),bulK.getLevel(U->maxlevel),
-            G.getLevel(U->maxlevel),gc.getLevel(U->maxlevel),M,U->maxlevel,lc,u_proportion);
+            G.getLevel(U->maxlevel),gc.getLevel(U->maxlevel),M,U->maxlevel,para.lc,u_proportion);
             Voigt_all_level(H,M);
             // ----- compute right hand of d
         for (int l=U->maxlevel;l>=0;l--)
@@ -90,12 +90,12 @@ const MG & mgp_u, const MG & mgp_d, const double lc, const int myid, const int n
              fd_h(U,fd.getLevel(l),H.getLevel(l),l);
         }
         // ----- compute d
-        d_entire(U,d,fd,H,gc,M,lc,mgp_d,myid,nbprocs,t,fd_norm);
+        d_entire(U,d,fd,H,gc,M,para.lc,para.mg_d,myid,nbprocs,t,fd_norm);
         d_max = delta_d_max(d.getLevel(U->maxlevel),d_old);
         d_old = d.getLevel(U->maxlevel);
             
         FeW=externe_force_sum(fu.getLevel(U->maxlevel).getgrid(2),M);       
-	    FeW = voxel_size*FeW;	
+	    FeW = para.voxel_size*FeW;	
         if (t>=500)
         { 
                 ///------------ wrtite history ------------///

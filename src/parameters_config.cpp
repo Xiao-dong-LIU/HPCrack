@@ -60,6 +60,8 @@ void Parameters::readFromFile(const string& filename) {
                     mg_d.nu2 = stoi(value);
                 } else if (key == "gamma_d") {
                     mg_d.gamma = stoi(value);
+                } else if (key == "lc") {
+                    lc = stoi(value);
                 } else if (key == "outK") {
                     outK = stoi(value);
                 } else if (key == "outG") {

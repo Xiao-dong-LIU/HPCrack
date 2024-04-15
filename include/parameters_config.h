@@ -17,6 +17,7 @@ struct Parameters {
     string IMGname;
     vector<int> element_nb;
     double voxel_size;
+    double lc; 
     MG mg_u;
     MG mg_d;
     inputdomain IDM;

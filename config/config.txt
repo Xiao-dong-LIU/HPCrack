@@ -35,6 +35,11 @@ element_nb=4,4,4
 
 
 # ########## Multigrid ##########
+# ### ncy: max nomber of MG cycles 
+# ### nu0: nomber of relaxations on the coasest level
+# ### nu1: nomber of pre-relaxations
+# ### nu2: nomber of postrelaxations
+# ### gamma: cycleindex, 1 for Vcycle, 2 for Wcycle
 # Multigrid cycle parameters for computing u (mechanical part)
 ncy_u=12
 nu0_u=50
@@ -51,7 +56,8 @@ gamma_d=1
 
 
 # ########## Phase field ##########
-
+# ### lc: in fonction of nomber of elements on the finest level, can be no-inter. 
+lc = 3.;
 
 
 

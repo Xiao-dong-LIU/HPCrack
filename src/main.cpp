@@ -7,14 +7,10 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#include "PF_schema.h"
-#include "omp.h"
-#include "mpi.h"
 #include "mpi_env_set.h"
 #include "initialisation.h"
 #include "imput_image.h"
 #include "PF_schema.h"
-#include "mg_cycle_parameter.h"
 #include "output_result.h"
 #include "mg.h"
 #include "mpi_free.h"
@@ -74,13 +70,13 @@ int main(int argc, char * argv[]){
 
 	///------------ Initialization  ------------///
     Stack  U;
-    initialize(&U, &para.IDM, maxlevel, para.element_nb, para.X_start ,M);
+    initialize(&U, para, M, maxlevel);
     ///------------ Image and material setting ------------///
 	mg<double> bulK(&U,maxlevel);   /// bulK modulus
 	mg<double> G(&U,maxlevel);		/// shear modulus G
 	mg<double> gc(&U,maxlevel);		/// gc
 	///------------ Assigne material property 
-	input_total(&U,bulK,G,gc,M,para.IDM,para.IMGname,para.voxel_size);
+	input_total(&U,bulK,G,gc,M,para);
 
 	///------------ Output material property
 	if (para.outK==1)
@@ -93,11 +89,11 @@ int main(int argc, char * argv[]){
 	/// ----------- lc of phase field 
 	Level *L;
 	L=U.Ll+maxlevel;
-	double lc=L->hz*3.0;
-	if(myid==0) cout<< "lc="<<lc<<endl;
+	para.lc*=L->hz;
 
  	double t1 = MPI_Wtime();      /// get start time
-	phm(&U,bulK,G,gc,M,para.mg_u,para.mg_d,lc,myid,nbprocs,para.voxel_size);
+	// ------- phase field
+	phm(&U,bulK,G,gc,M,para,myid,nbprocs);
 	/// get final time
 	double t2 = MPI_Wtime();
 	double t = t2-t1;

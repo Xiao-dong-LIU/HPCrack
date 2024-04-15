@@ -77,8 +77,8 @@ You can acknowledge (using references [1]) the contribution of this library in a
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contact
-
+Please create an issue to open discuss. 
 ## Acknowledgments
-Lilou Gauthier is thanked for the generation of the image in the example. 
+Lilou Gautier is thanked for the generation of the image in the example. 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
