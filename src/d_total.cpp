@@ -9,8 +9,8 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 =========================================================================*/
 #include "d_total.h"
 #include "mg_cycle_d.h"
-#include "PCG_routines.h"
-#include "PCG_d.h"
+#include "pcg_routines.h"
+#include "pcg_d.h"
 
 void d_entire(Stack *U, mg<double> &d, mg<double> &fd, const mg<double> & H, const mg<double> &gc, 
 MPI_Setting & M, double lc, const MG & mgp_d, int myid, int nbprocs,int t, double & fd_norm)

@@ -7,8 +7,8 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _BD_h
-#define _BD_H
+#ifndef _boundary_conditions_h
+#define _boundary_conditions_H
 #include "grid2d.h"
 #include "mpi_struct.h"
 #include "gdvec.h"

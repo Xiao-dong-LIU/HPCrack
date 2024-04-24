@@ -10,13 +10,13 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "gauss_point_material_property.h"
 #include "strain_history.h"
 #include "shape_function.h"
-#include "PCG_routines.h"
+#include "pcg_routines.h"
 #include "mpi_free.h"
 #include "mpi_communications.h"
 #include "epsilon.h"
-#include "Sigma.h"
-#include "PCG_u.h"
-#include "BD.h"
+#include "sigma.h"
+#include "pcg_u.h"
+#include "boundary_conditions.h"
 
 //------------ get material property at gauss point from the diplacement of previous time step
 void MP_all_GAUSS_Point(Stack *U, vector <double> & K_d_g, vector <double> & G_d_g, 

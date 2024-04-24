@@ -13,9 +13,9 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "intergrid.h"
 #include "output_result.h"
 #include "imput_image.h"
-#include "PCG_routines.h"
-#include "PCG_u.h"
-#include "BD.h"
+#include "pcg_routines.h"
+#include "pcg_u.h"
+#include "boundary_conditions.h"
 #include "externe_forcce.h"
 #include "element_coarse.h"
 

@@ -7,7 +7,7 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#include "Fd.h"
+#include "fd.h"
 #include "shape_function.h"
 
 //------------------- Compute the new fd dure to the change of H

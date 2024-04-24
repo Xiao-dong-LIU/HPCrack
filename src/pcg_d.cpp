@@ -7,15 +7,15 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#include "PCG_d.h"
+#include "pcg_d.h"
 #include "shape_function.h"
-#include "BD.h"
+#include "boundary_conditions.h"
 #include <cmath>
 #include "mpi_communications.h"
 #include "gauss_point_material_property.h"
 #include "omp.h"
 #include "mpi_free.h"
-#include "PCG_routines.h"
+#include "pcg_routines.h"
 
 void Md_element(grid <double> & Md, const grid <double> & H, const grid <double> & gc, 
 const grid <double> & DN, grid2d & N, const double lc, const double wg, 

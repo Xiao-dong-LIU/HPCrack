@@ -36,10 +36,14 @@ MPI and C++ std17 library compiler are required for the compilation.
 ### Installation
 You can clone the project to your local directory 
 ```
-git clone https://src.koda.cnrs.fr/xiaodong/hpcrack.git
+git clone https://github.com/Xiao-dong-LIU/HPCrack.git
 ```
 ## Compilation 
-You can just do a make with the provided Makefile
+Go to the repository 
+```
+cd HPCrack
+```
+Do a make with the provided Makefile
 ```
 make
 ```

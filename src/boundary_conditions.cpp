@@ -7,8 +7,7 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#include "BD.h"
-#include "omp.h"
+#include "boundary_conditions.h"
 #include <cmath>
 
 

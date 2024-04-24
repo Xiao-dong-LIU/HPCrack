@@ -67,3 +67,5 @@ lc = 3.;
 outK=1;
 outG=0;
 outgc=0;
+outdesplacement=0;
+outHistory=0;

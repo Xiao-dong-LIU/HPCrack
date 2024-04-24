@@ -10,8 +10,8 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "externe_forcce.h"
 #include "omp.h"
 #include "mpi.h"
-#include "BD.h"
-#include "PCG_u.h"
+#include "boundary_conditions.h"
+#include "pcg_u.h"
 #include "shape_function.h"
 #include "realdomain.h"
 

@@ -11,7 +11,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "epsilon.h"
 #include "gauss_point_material_property.h"
 #include "shape_function.h"
-#include "Sigma.h"
+#include "sigma.h"
 #include "omp.h"
 #include <cmath>
 #include <algorithm>

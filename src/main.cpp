@@ -10,7 +10,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "mpi_env_set.h"
 #include "initialisation.h"
 #include "imput_image.h"
-#include "PF_schema.h"
+#include "phase_field.h"
 #include "output_result.h"
 #include "mg.h"
 #include "mpi_free.h"

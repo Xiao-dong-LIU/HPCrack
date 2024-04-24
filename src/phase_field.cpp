@@ -7,16 +7,14 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#include "PF_schema.h"
+#include "phase_field.h"
 #include "u_total.h"
 #include "d_total.h"
 #include "strain_history.h"
-#include "initialisation.h"
 
 #include "output_result.h"
-#include "imput_image.h"
-#include "Fd.h"
-#include "BD.h"
+#include "fd.h"
+#include "boundary_conditions.h"
 #include "element_coarse.h"
 #include "write_H.h"
 #include <iomanip>

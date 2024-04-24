@@ -1,14 +1,12 @@
 /*=========================================================================
- * 
- *  file CSV_read.h
- *  Created on Mon Feb 12 2024 by
- *  Xiaodong LIU (xiaodong.liu@cnrs.fr)
- *  Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
- * 
- * 
- *  Copyright (c) 2024 CNRS, Ecole Centrale de Nantes, Nantes Université
- * 
- =========================================================================*/
+
+Copyright (c) 2024 CNRS, Ecole Centrale de Nantes, Nantes Université
+
+Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
+
+Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
+
+=========================================================================*/
 
 #ifndef CSV_raed_h
 #define CSV_raed_h

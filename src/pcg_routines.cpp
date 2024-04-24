@@ -7,7 +7,7 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#include "PCG_routines.h"
+#include "pcg_routines.h"
 #include "mpi.h"
 #include "omp.h"
 #include "realdomain.h"

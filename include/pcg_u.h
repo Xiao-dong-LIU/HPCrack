@@ -7,8 +7,8 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _PCG_U_H
-#define _PCG_U_H
+#ifndef _pcg_u_H
+#define _pcg_u_H
 #include "grid2d.h"
 #include "mgvec.h"
 

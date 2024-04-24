@@ -7,8 +7,8 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _PCG_Routines_H
-#define _PCG_Routines_H
+#ifndef _pcg_Routines_H
+#define _pcg_Routines_H
 #include "grid.h"
 #include "mpi_struct.h"
 

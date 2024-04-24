@@ -16,7 +16,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "omp.h"
 #include "realdomain.h"
 #include "mpi_communications.h"
-#include "CSV_read.h"
+#include "csv_read.h"
 
 
 void input_setting(inputdomain & IDM, vector <int> const& element_nb, const int maxlevel)

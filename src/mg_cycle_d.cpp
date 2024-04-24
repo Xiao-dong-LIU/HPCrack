@@ -9,7 +9,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 =========================================================================*/
 #include "mg_cycle_d.h"
 #include "intergrid.h"
-#include "PCG_d.h"
+#include "pcg_d.h"
 
 
 

@@ -1,19 +1,17 @@
 /*=========================================================================
- * 
- *  file CSV_read.cpp
- *  Created on Mon Feb 12 2024 by
- *  Xiaodong LIU (xiaodong.liu@cnrs.fr)
- *  Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
- * 
- * 
- *  Copyright (c) 2024 CNRS, Ecole Centrale de Nantes, Nantes Université
- * 
- =========================================================================*/
+
+Copyright (c) 2024 CNRS, Ecole Centrale de Nantes, Nantes Université
+
+Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
+
+Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
+
+=========================================================================*/
 
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "CSV_read.h"
+#include "csv_read.h"
  
 void material_property( vector<int> & graylevel, vector<vector<double>> & material_property)
 {

@@ -7,12 +7,12 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#include "BD.h"
+#include "boundary_conditions.h"
 #include "intergrid.h"
 #include "mpi_communications.h"
 #include "shape_function.h"
-#include "PCG_u.h"
-#include "PCG_d.h"
+#include "pcg_u.h"
+#include "pcg_d.h"
 #include "omp.h"
 #include <stdlib.h>
 #include <cmath>

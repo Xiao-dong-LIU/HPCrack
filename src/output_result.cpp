@@ -14,7 +14,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "output_result.h"
 #include "shape_function.h"
 #include "imput_image.h"
-#include "BD.h"
+#include "boundary_conditions.h"
 
 
 using namespace std;
