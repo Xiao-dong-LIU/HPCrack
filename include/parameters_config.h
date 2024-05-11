@@ -13,7 +13,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include <iostream>
 #include <vector>
 #include <string>
-#include <fstream> // For file I/O
+#include <fstream>
 #include "structure_df.h"
 
 using namespace std;

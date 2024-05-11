@@ -13,7 +13,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include <string>
 
 using namespace std;
-
+//------------ verify existance of a folder, if not creat if
 void folder_verification(const string & folderpath);
 
 #endif

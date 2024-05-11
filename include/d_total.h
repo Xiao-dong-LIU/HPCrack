@@ -12,7 +12,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "mpi_struct.h"
 #include "structure_df.h"
 #include "mg.h"
-
+//------------- phase field routine for computing d
 void d_entire(Stack *U, mg<double> &d, mg<double> &fd, const mg<double> & H, const mg<double> &gc, 
 MPI_Setting & M, double lc, const MG & mgp_d, int myid, int nbprocs,int t, double & fd_norm);
 
