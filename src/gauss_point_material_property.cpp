@@ -53,10 +53,7 @@ const int g, const double small_k)
 	else if (d_g>1.)
 		d_g=1.;
 	g_d=(1.-small_k)*(1-d_g)*(1-d_g)+small_k;
-	/*
-	if (i==3&&j==3&&k>=13&&k<=19)
-	std::cout<<"i="<<i<<",j="<<j<<",k="<<k<<",d="<<d(l-1,i,j,k)<<",d_g="<<d_g<<",g_d="<<g_d<<std::endl;
-	*/
+	
 	coefg=g_d*MP_g;
 	return coefg;
 }

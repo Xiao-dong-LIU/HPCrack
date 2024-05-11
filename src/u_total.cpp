@@ -110,22 +110,6 @@ const double small_k, const double Ut,const int t,double & f_norm)
         d.getLevel(U->maxlevel), K_element.getLevel(U->maxlevel), G_element.getLevel(U->maxlevel),
         M,U->maxlevel,Ut,small_k);
 
-/*   
-   // ----- l2 norm convergence check
-    for (int j=2;j<=U->maxlevel;j++)
-	  {
-		  
-      double a = conver(U,u,uconv,j,M,Ut);
-		  double b = conver(U,v,vconv,j,M,Ut);
-		  double c = conver(U,w,wconv,j,M,Ut);
-		  if (myid==0)
-          {
-            std::cout<<"aen_u("<<j<<","<<j-1<<")="<<a<<std::endl;
-            std::cout<<"aen_v("<<j<<","<<j-1<<")="<<b<<std::endl;
-            std::cout<<"aen_w("<<j<<","<<j-1<<")="<<c<<std::endl;
-            std::cout<<"aen_uvw("<<j<<","<<j-1<<")="<<a+b+c<<std::endl;
-          }
-	  }
-*/
+
 }
 

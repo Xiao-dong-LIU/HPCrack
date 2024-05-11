@@ -42,26 +42,3 @@ MPI_Setting & M, const int myid, const int nbprocs, const int t, double & fd_nor
 		  pcg_d(U,d.getLevel(l),fd.getLevel(l),r.getLevel(l),H.getLevel(l),gc.getLevel(l),M,l,lc,mgp_d.nu2,t,fd_norm);
 	  }
 }
-/*
-void fmg_d(Stack *U, multigrid3d &d, multigrid3d &fd, multigrid3d &dold, multigrid3d &dconv, 
-		multigrid3d &H, multigrid3d &gc, multigrid3d &r, int l, double lc, const MG & mgp_d, 
-		MPI_Setting & M, int myid, int nbprocs, int t, double & fd_norm)
-{
-/// performs FMG with k levels and ncy cycles per level
-	if (U->maxlevel==1)
-	  for (int j=1;j< mgp_d.ncy;j++)
-		precondition_conjugate_gradient_d(U,d,fd,r,H,gc,l,lc,M,mgp_d.nu0,t,fd_norm);
-	if (l==1) 
-		precondition_conjugate_gradient_d(U,d,fd,r,H,gc,l,lc,M,mgp_d.nu0,t,fd_norm);
-	else
-	  {
-		  fmg_d(U,d,fd,dold,dconv,H,gc,r,l-1,lc,mgp_d,M,myid,nbprocs,t,fd_norm);
-		  fmg_interpolation_d(U,d,dconv,l,M);
-		  for (int j=1;j<=mgp_d.ncy;j++)
-			{
-			 cycle_d(U,d,fd,dold,H,gc,r,l,lc,mgp_d,M,myid,nbprocs,t,fd_norm);
-			if(M.coordinates[0]==0&&M.coordinates[1]==0&&M.coordinates[2]==0)printf("\n");
-			}
-	  }
-}
-*/

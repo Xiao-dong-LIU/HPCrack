@@ -12,18 +12,17 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 namespace fs = std::filesystem;
 
-void folder_verification() {
-    std::string folderPath = "Output";
+void folder_verification(const string & folderpath) {
 
     // Check if the folder already exists
-    if (!fs::exists(folderPath)) {
+    if (!fs::exists(folderpath)) {
         // If it doesn't exist, create it
-        if (fs::create_directory(folderPath)) {
-            std::cout << "Output created successfully!" << std::endl;
+        if (fs::create_directory(folderpath)) {
+            std::cout <<folderpath<< " created successfully!" << std::endl;
         } else {
-            std::cerr << "Failed to create Output!" << std::endl;
+            std::cerr << "Failed to create " <<folderpath<<"!"<< std::endl;
         }
     } else {
-        std::cout << "Output already exists!" << std::endl;
+        std::cout <<folderpath<< " already exists!" << std::endl;
     }
 }

@@ -19,13 +19,14 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "write_H.h"
 #include <iomanip>
 #include "externe_forcce.h"
-#include "d_sum.h"
+#include "d_max.h"
 #include <fstream>
 #include "mgvec.h"
+#include "folder_verification.h"
 
 //------------ the phase field method 
 
-void phm(Stack *U, const mgdouble & bulK, const mgdouble & G, const mgdouble & gc, MPI_Setting & M, const Parameters & para,
+void phase_field(Stack *U, const mgdouble & bulK, const mgdouble & G, const mgdouble & gc, MPI_Setting & M, const Parameters & para,
 const int myid, const int nbprocs)
 {
      
@@ -36,7 +37,7 @@ const int myid, const int nbprocs)
     double u_proportion,U_unit;
     U_unit=1.;
     double FeW;
-    double d_max=1.;
+    double Delatad_max=1.;
     mg<double> d(U,U->maxlevel);
     mg<double> H(U,U->maxlevel);
     mg<double> fd(U,U->maxlevel);
@@ -60,7 +61,7 @@ const int myid, const int nbprocs)
         std::cout<<"Can not open file!"<<std::endl;
         exit(-1);
     }
-
+     if (para.outTdata==1) folder_verification("Time_step_data");
 	double t1, t2;
     for (int t=0;t<5000;t++)
     {
@@ -89,28 +90,32 @@ const int myid, const int nbprocs)
         }
         // ----- compute d
         d_entire(U,d,fd,H,gc,M,para.lc,para.mg_d,myid,nbprocs,t,fd_norm);
-        d_max = delta_d_max(d.getLevel(U->maxlevel),d_old);
+        Delatad_max = delta_d_max(d.getLevel(U->maxlevel),d_old);
         d_old = d.getLevel(U->maxlevel);
             
         FeW=externe_force_sum(fu.getLevel(U->maxlevel).getgrid(2),M);       
 	    FeW = para.voxel_size*FeW;	
-        if (t>=500)
-        { 
-                ///------------ wrtite history ------------///
-                write_vector_3D(u.getLevel(U->maxlevel).getgrid(0),"u",myid,t); 
-                write_vector_3D(u.getLevel(U->maxlevel).getgrid(1),"v",myid,t); 
-                write_vector_3D(u.getLevel(U->maxlevel).getgrid(2),"w",myid,t); 
-                write_vector_3D(H.getLevel(U->maxlevel),"H",myid,t); 
-                write_vector_3D(d.getLevel(U->maxlevel),"d",myid,t); 
-                ///------------ output d ------------///
-                write_total_de(U,d.getLevel(U->maxlevel),M,"S","d","d",U->maxlevel,myid,nbprocs,t);
+        ///------------ wrtite history ------------///
+
+        if(para.outTdata==1&&(t%para.Tdatafrequence==0))
+        {
+            write_vector_3D(u.getLevel(U->maxlevel).getgrid(0),"u",myid,t); 
+            write_vector_3D(u.getLevel(U->maxlevel).getgrid(1),"v",myid,t); 
+            write_vector_3D(u.getLevel(U->maxlevel).getgrid(2),"w",myid,t); 
+            write_vector_3D(H.getLevel(U->maxlevel),"H",myid,t); 
+            write_vector_3D(d.getLevel(U->maxlevel),"d",myid,t); 
         }
+        double dmax=d_max(d.getLevel(U->maxlevel));
+        ///------------ output d ------------///
+        if(t==0||dmax>=0.98)
+        write_total_de(U,d.getLevel(U->maxlevel),M,"S","d","d",U->maxlevel,myid,nbprocs,t);
+        
         Ut=Ut+delta_U;
         u_proportion=Ut/U_unit;
         if (myid==0)
         {
 	      F_U<<"T= "<<t<<",U= "<<std::setprecision(10)<<Ut<<" ,Fw= "<<std::setprecision(10)
-          <<u_proportion*FeW<<" ,deltaU= "<<delta_U<<" ,d_max= "<<d_max<<std::endl;
+          <<u_proportion*FeW<<" ,deltaU= "<<delta_U<<" ,delatad_max= "<<Delatad_max<<std::endl;
 	    }
         if (u_proportion*FeW<0.5)
 	    break;

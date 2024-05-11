@@ -72,14 +72,7 @@ for (int k=0;k<=L->nbcoloz-1;k++)
 //---------------- Compute elastic energy at Gauss point
 double W(const grid2d& sigma, const grid2d& epsilon) 
 {
-	/*
-	double tr_epsilon = 0.0;
-	tr_epsilon = trace_epsilon(epsilon);
-	double ddp_epsilon = 0.0; // Double dot product of the epsilon_dev
-	ddp_epsilon = epsilon_dev(epsilon);
-	double W_g; // Positive energy part
-	W_g = 0.5 * K_g * tr_epsilon * tr_epsilon + G_g * ddp_epsilon;
-	*/
+
 	double W_g=0.;
 	for (int c=0;c<3;c++)
 		for (int m=0;m<3;m++)

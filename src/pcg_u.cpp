@@ -132,18 +132,13 @@ const int i,const int j,const int k, const double small_k)
 			tr_epsilon = trace_epsilon(epsilon);
 			K_d_g_s=K_d_g[g];
 			G_d_g_s=G_d_g[g];
-		//	if (l==0&&i==0&&j==0&&k==1) 
-		//	std::cout<<"g="<<g<<" G="<<G_d_g_s<<" K="<<K_d_g_s<<std::endl;
-			//--- get K_d and G_d for different cases
-		//	if(G_d_g_s<1.)
-		//	std::cout<<"G_d_g_s="<<G_d_g_s<<",K_d_g_s="<<K_d_g_s<<std::endl;
+		
 			Sigma_g(sigma,epsilon,K_d_g_s,G_d_g_s,tr_epsilon);
 			for (int c=0; c<3; c++)
 				for (int m=0; m<3; m++)
 				{
 					sigma_all_gauss(g,c,m)=sigma(c,m);
-			//		if (l==0&&i==0&&j==0&&k==1) 
-		//	std::cout<<"g="<<g<<" c="<<c<<" m="<<m<<" sigma="<<sigma_all_gauss(g,c,m)<<std::endl;
+			
 				}	
 		}
 	for (int sf=0;sf<8;sf++)  /// test Function
@@ -162,10 +157,7 @@ const int i,const int j,const int k, const double small_k)
 				  			sigma_all_gauss(g,1,2)*DN(1,g,sf)+
 							sigma_all_gauss(g,2,2)*DN(2,g,sf));
 		}
-		//if(i==3&&j==3&&k==3)
-		//std::cout<<"i="<<i<<",j="<<j<<",k="<<k<<",Fi_w_ite="<<Fi_w_ite<<std::endl;
-	//	if (l==0&&i==0&&j==0&&k==1) 
-	//	cout<<"i = "<<Cx[sf]+i<<",j="<<Cy[sf]+j<<",k="<<Cz[sf]+k<<",Fi=" << Fi_u_ite<<endl;
+		
 		#pragma omp critical
 		{
 		Fi.getgrid(0)(Cx[sf]+i,Cy[sf]+j,Cz[sf]+k)+=Fi_u_ite;
@@ -190,8 +182,7 @@ const double small_k)
 			{
 				Internal_Force_element(U,Fi,u,MP_choice_d,bulK,G,d,K_element,G_element,DN,N,wg,
 				l,i,j,k,small_k);
-			//	if (l==0)
-			//	cout<<"i="<<i<<",j="<<j<<",k="<<k<<",u="<<u.getgrid(0)(i,j,k)<<",f="<<Fi.getgrid(0)(i,j,k)<<endl;
+		
 			}
 }
 
@@ -220,12 +211,7 @@ const griddouble & G_element, MPI_Setting & M, const int l,  const double small_
 	// compute residual norm
 	for (int di=0; di<3; di++)
 		r_norm += grid_norm(ru.getgrid(di),M);
-	/*
-    if (M.coordinates[0] == 0 && M.coordinates[1] == 0 && M.coordinates[2] == 0) 
-        {
-            std::cout<<"Level "<<l<<" Initial residual="<<r_norm<<std::endl;
-        }
-	*/
+	
 	return r_norm;
 }
 
@@ -273,15 +259,7 @@ const int t, double & f_norm)
 
 	Dirichlet_residual_u(U,ru,M,l);
 
-	// compute residual norm
-	/*
-	for (int d=0; d<3; d++)
-		r_norm += grid_norm(ru.getgrid(d),M);
-    if (M.coordinates[0] == 0 && M.coordinates[1] == 0 && M.coordinates[2] == 0) 
-        {
-            std::cout<<"Level "<<l<<" Initial residual="<<r_norm<<std::endl;
-        }
-	*/
+
 	// compute stiff
     PreM_u(U,preM,MP_choice_d,bulK,G,d,K_element,G_element,DN,N,wg,l,small_k);
 	derived_datatypes(d.axis(),&M);

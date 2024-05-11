@@ -15,6 +15,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "mg.h"
 #include "mpi_free.h"
 #include "parameters_config.h"
+#include "folder_verification.h"
 
 
 using namespace std;
@@ -79,6 +80,7 @@ int main(int argc, char * argv[]){
 	input_total(&U,bulK,G,gc,M,para);
 
 	///------------ Output material property
+	folder_verification("Output");
 	if (para.outK==1)
 		write_total_de(&U,bulK.getLevel(maxlevel),M,"S","bulK","bulK",maxlevel,myid,nbprocs,0);
 	if (para.outG==1)
@@ -93,7 +95,7 @@ int main(int argc, char * argv[]){
 
  	double t1 = MPI_Wtime();      /// get start time
 	// ------- phase field
-	phm(&U,bulK,G,gc,M,para,myid,nbprocs);
+	phase_field(&U,bulK,G,gc,M,para,myid,nbprocs);
 	/// get final time
 	double t2 = MPI_Wtime();
 	double t = t2-t1;

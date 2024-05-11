@@ -1,3 +1,12 @@
+/*=========================================================================
+
+Copyright (c) 2024 CNRS, Ecole Centrale de Nantes, Nantes Université
+
+Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
+
+Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
+
+=========================================================================*/
 #ifndef PARAMS_H
 #define PARAMS_H
 
@@ -21,7 +30,8 @@ struct Parameters {
     MG mg_u;
     MG mg_d;
     inputdomain IDM;
-    int outK,outG,outgc;
+    int outK,outG,outgc,outdesplacement,outH;
+    int outTdata,Tdatafrequence;
 
     // Function to read parameters from a file
     void readFromFile(const string& filename);

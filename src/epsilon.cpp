@@ -28,32 +28,6 @@ void epsilon_routine(grid2d& epsilon, const gdvecdouble & u, const griddouble & 
 			{
 				dc = u.getgrid(c)(Cx[tf] + i, Cy[tf] + j, Cz[tf] + k);
 				dm = u.getgrid(m)(Cx[tf] + i, Cy[tf] + j, Cz[tf] + k);
-				/*
-				switch (c)
-				{
-				case 0:
-					dc = u.getgrid(0)(Cx[tf] + i, Cy[tf] + j, Cz[tf] + k);
-					break;
-				case 1:
-					dc = u.getgrid(1)(l - 1, Cx[tf] + i, Cy[tf] + j, Cz[tf] + k);
-					break;
-				case 2:
-					dc = u.getgrid(2)(l - 1, Cx[tf] + i, Cy[tf] + j, Cz[tf] + k);
-					break;
-				}
-				switch (m)
-				{
-				case 0:
-					dm = u(l - 1, Cx[tf] + i, Cy[tf] + j, Cz[tf] + k);
-					break;
-				case 1:
-					dm = v(l - 1, Cx[tf] + i, Cy[tf] + j, Cz[tf] + k);
-					break;
-				case 2:
-					dm = w(l - 1, Cx[tf] + i, Cy[tf] + j, Cz[tf] + k);
-					break;
-				}
-				*/
 				epsilon_temp += 0.5*(DN(c, g, tf) * dm + DN(m, g, tf) * dc);
 			}
 			epsilon(c, m)=epsilon_temp;

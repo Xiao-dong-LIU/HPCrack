@@ -1,3 +1,12 @@
+/*=========================================================================
+
+Copyright (c) 2024 CNRS, Ecole Centrale de Nantes, Nantes Université
+
+Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
+
+Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
+
+=========================================================================*/
 #include "parameters_config.h"
 #include <sstream> // Include for stringstream
 
@@ -68,7 +77,16 @@ void Parameters::readFromFile(const string& filename) {
                     outG = stoi(value);
                 } else if (key == "outgc") {
                     outgc = stoi(value);
+                } else if (key == "outdesplacement") {
+                    outdesplacement = stoi(value);
+                } else if (key == "outH") {
+                    outH = stoi(value);
+                } else if (key == "outTdata") {
+                    outTdata = stoi(value);
+                } else if (key == "Tdatafrequence") {
+                    Tdatafrequence = stoi(value);
                 }
+                
                 // Add parsing for other parameters here
             }
         }

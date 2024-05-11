@@ -10,9 +10,10 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #ifndef folder_verification_h
 #define folder_verification_h
 #include <iostream>
+#include <string>
 
+using namespace std;
 
-
-void folder_verification();
+void folder_verification(const string & folderpath);
 
 #endif
