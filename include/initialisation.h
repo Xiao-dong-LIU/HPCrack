@@ -14,7 +14,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "mpi_struct.h"
 #include <iostream>
 #include <vector>
-#include "parameters_config.h"
+#include "config.h"
 using namespace std;
 
 /// ------------- initialize values in datastructure

@@ -13,7 +13,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "mg.h"
 #include "structure_df.h"
 #include "mpi_struct.h"
-#include "parameters_config.h"
+#include "config.h"
 //------------ the phase field method 
 void phase_field(Stack *U, const mgdouble & bulK, const mgdouble & G, const mgdouble & gc, 
 MPI_Setting & M, const Parameters & para, const int myid, const int nbprocs);

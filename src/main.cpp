@@ -14,7 +14,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "output_result.h"
 #include "mg.h"
 #include "mpi_free.h"
-#include "parameters_config.h"
+#include "config.h"
 #include "folder_verification.h"
 
 

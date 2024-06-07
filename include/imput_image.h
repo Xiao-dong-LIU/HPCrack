@@ -14,7 +14,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "grid.h"
 #include "mg.h"
 #include "mpi_struct.h"
-#include "parameters_config.h"
+#include "config.h"
 using namespace std;
 
 
