@@ -7,8 +7,8 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _grid_tmp_h
-#define _grid_tmp_h
+#ifndef _grid_h
+#define _grid_h
 
 #include <vector>
 #include <algorithm>
@@ -30,6 +30,7 @@ public:
   grid(const vector<size_t> & dim);
   /// copy contructor
   grid(const grid <T> & in):dim(in.dim), val(in.val){};
+  grid(grid<T>&& in) noexcept : dim(std::move(in.dim)), val(std::move(in.val)) {};
   // operator ()
   T & operator()(const size_t i, const size_t j, const size_t k);
   const T & operator()(const size_t i, const size_t j, const size_t k) const;
@@ -72,10 +73,11 @@ using gridfloat = grid <float>;
 template <class T> 
 grid<T>::grid(const vector<size_t> & _dim):dim(_dim)
 {
-    using std::begin;
-    using std::end;
-    auto multi = std::accumulate(begin(dim), end(dim), 1, std::multiplies<size_t>());
-    val.resize(multi,xDataType<T>::zero());
+  size_t total_size = 1;
+    for (size_t d : dim) {
+        total_size *= d;
+    }
+    val = vector<T>(total_size, xDataType<T>::zero());  
 }
 template <class T> 
 T & grid<T>::operator()(const size_t i, const size_t j, const size_t k) 
@@ -112,7 +114,7 @@ grid <T> & grid<T>::gridsqrt ()
 
     #pragma omp parallel for
       for (size_t i=0; i<val.size(); i++)
-        val[i] = (double)sqrt((double)val[i]);
+        val[i] = static_cast<T>(std::sqrt(static_cast<double>(val[i])));
     return *this;
 }
 
@@ -127,15 +129,7 @@ grid<T> &grid<T>::operator=(const grid<T>& A)
 {
   if (this == &A) return *this;
   else
-  {
-    this->val.resize(A.val.size());
-   #pragma omp parallel for
-    for (size_t i=0; i<val.size(); i++)
-        {
-            val[i]=A.val[i];
-        }
-    return *this;
-  }  
+    throw std::runtime_error("Grid dimensions mismatch in = operator");
 }
 
 
@@ -163,7 +157,7 @@ grid<T> &grid<T>::operator+=(const grid<T>& A)
         return *this;
    }
    else 
-    throw;
+    throw std::runtime_error("Grid dimensions mismatch in += operator");
 }
 
 
@@ -191,7 +185,7 @@ grid<T> &grid<T>::operator-=(const grid<T>& A)
         return *this;
    }
    else 
-    throw;
+    throw std::runtime_error("Grid dimensions mismatch in -= operator");
 }
 
 template <class T>
@@ -217,7 +211,13 @@ grid<T> & grid<T>::operator/=(const grid<T>& A )
 {
     #pragma omp parallel for
     for  (size_t i = 0; i < val.size(); ++i) 
-        val[i] =  val[i]/A.val[i];
+    {
+      if (A.val[i] == xDataType<T>::zero()) {
+        throw std::runtime_error("Division by zero in grid /= operation");
+    }
+      val[i] =  val[i]/A.val[i];
+    }
+        
     return *this;
 }
 /*
@@ -238,10 +238,9 @@ grid<T> & grid<T>::operator/=(const T& a )
 template <class T>
 std::ostream& operator<<(std::ostream& os, const grid<T> & A)
 {
-  
-  for (int k=0; k < A.axis()[2]; ++k)
     for (int j=0; j < A.axis()[1]; ++j)
      for (int i=0; i < A.axis()[0]; ++i)
+     for (int k=0; k < A.axis()[2]; ++k)
      { 
         os <<"i="<<i<<",j="<<j<<",k="<<k<<": "<< A(i, j, k) <<endl;
      }
