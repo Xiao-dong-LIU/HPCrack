@@ -7,15 +7,13 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _PHASE_FIELD_H
-#define _PHASE_FIELD_H
-
-#include "mg.h"
-#include "structure_df.h"
+#ifndef _PCG_UTILITIES_H
+#define _PCG_UTILITIES_H
+#include "grid.h"
 #include "mpi_struct.h"
-#include "configuration.h"
-//------------ the phase field method 
-void phase_field(Stack *U, mg<double> &d, mg<double> &fd, const mg<double> & H, const mg<double> &gc, 
-MPI_Setting & M, double lc, const MG & mgp_d, int myid, int nbprocs,int t, double & fd_norm);
+
+double vv_product(const grid<double>& r, const grid<double>& z, const MPI_Setting & M);
+double grid_norm(const grid<double>& r, const MPI_Setting & M);
+
 
 #endif

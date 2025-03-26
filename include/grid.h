@@ -7,8 +7,8 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _grid_h
-#define _grid_h
+#ifndef _GRID_H
+#define _GRID_H
 
 #include <vector>
 #include <algorithm>

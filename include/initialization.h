@@ -7,15 +7,17 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _PHASE_FIELD_H
-#define _PHASE_FIELD_H
+#ifndef _INITIALIZATION_H
+#define _INITIALIZATION_H
 
-#include "mg.h"
 #include "structure_df.h"
 #include "mpi_struct.h"
+#include <iostream>
+#include <vector>
 #include "configuration.h"
-//------------ the phase field method 
-void phase_field(Stack *U, mg<double> &d, mg<double> &fd, const mg<double> & H, const mg<double> &gc, 
-MPI_Setting & M, double lc, const MG & mgp_d, int myid, int nbprocs,int t, double & fd_norm);
+using namespace std;
 
-#endif
+/// ------------- initialize values in datastructure
+void initialize(Stack *U, const Parameters & para, const MPI_Setting &M, const int maxlevel);
+
+#endif // INITIALIZATION_H

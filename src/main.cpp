@@ -7,15 +7,15 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#include "mpi_env_set.h"
-#include "initialisation.h"
-#include "imput_image.h"
-#include "phase_field.h"
-#include "output_result.h"
+#include "mpi_environment_setup.h"
+#include "initialization.h"
+#include "image_input.h"
+#include "crack_propagation.h"
+#include "vtk_output.h"
 #include "mg.h"
-#include "mpi_free.h"
-#include "config.h"
-#include "folder_verification.h"
+#include "mpi_resource_cleanup.h"
+#include "configuration.h"
+#include "directory_verification.h"
 
 
 using namespace std;
@@ -95,7 +95,7 @@ int main(int argc, char * argv[]){
 
  	double t1 = MPI_Wtime();      /// get start time
 	// ------- phase field
-	phase_field(&U,bulK,G,gc,M,para,myid,nbprocs);
+	crack_propagation(&U,bulK,G,gc,M,para,myid,nbprocs);
 	/// get final time
 	double t2 = MPI_Wtime();
 	double t = t2-t1;

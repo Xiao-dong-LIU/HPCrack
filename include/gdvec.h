@@ -7,8 +7,8 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _gdvec_h
-#define _gdvec_h
+#ifndef _GDVEC_H
+#define _GDVEC_H
 #include "grid.h"
 
 

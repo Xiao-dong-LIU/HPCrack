@@ -7,11 +7,22 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _SHAPE_FUNCTION_H
-#define _SHAPE_FUNCTION_H
-#include "grid2d.h"
-#include "grid.h"
+#include "mpi_resource_cleanup.h"
 
-///    Shape function  and Derivative of shape function
-void Dshape_function(grid2d& N, grid <double>& DN, const double hx, const double hy, const double hz);
-#endif // SHAPE_FUNCTION_H
+
+
+
+void mpi_data_free (MPI_Setting & M)
+{
+    MPI_Type_free(&M.type_x);
+    MPI_Type_free(&M.type_y);
+    MPI_Type_free(&M.type_z);
+}
+
+
+void mpi_comm_free(MPI_Setting & M)
+{
+    MPI_Comm_free(&M.X_row_comm);
+    MPI_Comm_free(&M.Y_row_comm);
+    MPI_Comm_free(&M.Z_row_comm);
+}

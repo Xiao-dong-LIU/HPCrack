@@ -7,11 +7,12 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _SHAPE_FUNCTION_H
-#define _SHAPE_FUNCTION_H
-#include "grid2d.h"
-#include "grid.h"
+#ifndef _MECHANICAL_STRESS_H
+#define _MECHANICAL_STRESS_H
 
-///    Shape function  and Derivative of shape function
-void Dshape_function(grid2d& N, grid <double>& DN, const double hx, const double hy, const double hz);
-#endif // SHAPE_FUNCTION_H
+#include "grid2d.h"
+
+void Sigma_g(grid2d & sigma, const grid2d & epsilon, const double K_g, const double G_g, 
+const double tr_epsilon);
+
+#endif // MECHANICAL_STRESS_H

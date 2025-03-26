@@ -7,11 +7,15 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _SHAPE_FUNCTION_H
-#define _SHAPE_FUNCTION_H
-#include "grid2d.h"
+
+#ifndef _PHASE_FIELD_MAX_SEARCH_H
+#define _PHASE_FIELD_MAX_SEARCH_H
+
 #include "grid.h"
 
-///    Shape function  and Derivative of shape function
-void Dshape_function(grid2d& N, grid <double>& DN, const double hx, const double hy, const double hz);
-#endif // SHAPE_FUNCTION_H
+// find the maximum variation of d over the entier domain.
+double delta_d_max(const grid <double> & d, const grid <double> & d_old);
+// find max of d over the whole domain
+double d_max (const grid <double> & d);
+
+#endif

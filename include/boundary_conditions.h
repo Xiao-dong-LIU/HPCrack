@@ -7,8 +7,8 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _boundary_conditions_h
-#define _boundary_conditions_H
+#ifndef _BOUNDARY_CONDITIONS_H
+#define _BOUNDARY_CONDITIONS_H
 #include "grid2d.h"
 #include "mpi_struct.h"
 #include "gdvec.h"
@@ -24,4 +24,4 @@ void Dirichlet_force_d(Stack* U, griddouble& fd, const griddouble & Fi,  const M
 void Dirichlet_residual_d(Stack* U, griddouble & r, const MPI_Setting & M, const int l);
 
 
-#endif // _BD_H
+#endif // BOUNDARY_CONDITIONS_H

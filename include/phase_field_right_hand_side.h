@@ -7,15 +7,14 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _PHASE_FIELD_H
-#define _PHASE_FIELD_H
 
-#include "mg.h"
+#ifndef _PHASE_FIELD_RIGHT_HAND_SIDE_H
+#define _PHASE_FIELD_RIGHT_HAND_SIDE_H
+#include "grid.h"
 #include "structure_df.h"
-#include "mpi_struct.h"
-#include "configuration.h"
-//------------ the phase field method 
-void phase_field(Stack *U, mg<double> &d, mg<double> &fd, const mg<double> & H, const mg<double> &gc, 
-MPI_Setting & M, double lc, const MG & mgp_d, int myid, int nbprocs,int t, double & fd_norm);
 
-#endif
+//------------------- Compute the new fd dure to the change of H
+void fd_h(Stack* U, griddouble & fd, const griddouble & H, const int l);
+
+
+#endif // PHASE_FIELD_RIGHT_HAND_SIDE_H

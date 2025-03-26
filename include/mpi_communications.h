@@ -8,8 +8,8 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
 
-#ifndef _mpi_communications_H
-#define _mpi_communications_H
+#ifndef _MPI_COMMUNICATIONS_H
+#define _MPI_COMMUNICATIONS_H
 #include "mpi_struct.h"
 #include "grid.h"
 

@@ -8,8 +8,8 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
 
-#ifndef _MPI_STRUCT__H
-#define _MPI_STRUCT__H
+#ifndef _MPI_STRUCT_H
+#define _MPI_STRUCT_H
 #include "mpi.h"
 
 typedef struct

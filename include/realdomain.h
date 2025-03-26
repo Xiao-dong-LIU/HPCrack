@@ -7,8 +7,8 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _realdomain_h
-#define _realdomain_h
+#ifndef _REALDOMAIN_H
+#define _REALDOMAIN_H
 #include <iostream>
 #include <vector>
 #include "mpi_struct.h"

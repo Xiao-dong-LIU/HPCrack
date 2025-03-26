@@ -7,15 +7,16 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _PHASE_FIELD_H
-#define _PHASE_FIELD_H
 
-#include "mg.h"
-#include "structure_df.h"
+#ifndef _MPI_ENVIRONMENT_SETUP_H
+#define _MPI_ENVIRONMENT_SETUP_H
 #include "mpi_struct.h"
-#include "configuration.h"
-//------------ the phase field method 
-void phase_field(Stack *U, mg<double> &d, mg<double> &fd, const mg<double> & H, const mg<double> &gc, 
-MPI_Setting & M, double lc, const MG & mgp_d, int myid, int nbprocs,int t, double & fd_norm);
+#include <iostream>
+#include <vector>
+
+// MPI_Setting
+void Set_MPI(MPI_Setting *M, std::vector<int> const& np);
+
+
 
 #endif

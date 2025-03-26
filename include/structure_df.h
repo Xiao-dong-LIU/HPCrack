@@ -7,8 +7,8 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _STRUCTUREDF__H
-#define _STRUCTUREDF__H
+#ifndef _STRUCTURE_DF_H
+#define _STRUCTURE_DF_H
 
 typedef struct
 {

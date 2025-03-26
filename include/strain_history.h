@@ -7,8 +7,8 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef strain_history_H
-#define strain_history_H
+#ifndef _STRAIN_HISTORY_H
+#define _STRAIN_HISTORY_H
 #include "grid2d.h"
 #include "gdvec.h"
 #include "mpi_struct.h"
@@ -33,4 +33,4 @@ const griddouble& G, const griddouble& gc, const MPI_Setting & M, const int l,
 const double lc, const double u_proportion) ;
 
 
-#endif // !strain_history_H
+#endif // !STRAIN_HISTORY_H
