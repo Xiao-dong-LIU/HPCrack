@@ -33,10 +33,3 @@ grid2d::~grid2d(){
 	delete []a;
 	a=0;
 }
-
-//For free memory of U
-void finalize(Stack *U)
-{
-/// free memory at end of program
-free(U->Ll);
-}

@@ -13,7 +13,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include <vector>
 #include <algorithm>
 #include <iostream>
-#include "structure_df.h"
+#include "stack_and_level.h"
 
 
 // 2d vector class
@@ -34,7 +34,5 @@ public:
   ~grid2d();
 };
 
-// free memory at end of program
-void finalize(Stack *U);
 
 #endif

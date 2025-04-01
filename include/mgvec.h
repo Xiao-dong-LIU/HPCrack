@@ -13,7 +13,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 #include "gdvec.h"
 #include "omp.h"
-#include "structure_df.h"
+#include "stack_and_level.h"
 
 using namespace std;
 

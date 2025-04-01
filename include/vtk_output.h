@@ -11,7 +11,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #define _VTK_OUTPUT_H
 
 #include <string>
-#include "structure_df.h"
+#include "stack_and_level.h"
 #include "mpi_struct.h"
 #include "gdvec.h"
 

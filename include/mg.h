@@ -11,10 +11,18 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #define _MG_H
 #include "grid.h"
 #include "omp.h"
-#include "structure_df.h"
+#include "stack_and_level.h"
 
 using namespace std;
 
+typedef struct
+{
+	int nu0;             /// mesh size x
+	int nu1;             /// mesh size y
+	int nu2;			   /// mesh size z
+	int gamma;             /// number of nodes x
+	int ncy;             /// number of nodes y
+} MG;
 
 // mg
 template <class T> 

@@ -10,7 +10,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #ifndef _INITIALIZATION_H
 #define _INITIALIZATION_H
 
-#include "structure_df.h"
+#include "stack_and_level.h"
 #include "mpi_struct.h"
 #include <iostream>
 #include <vector>

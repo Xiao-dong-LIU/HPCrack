@@ -11,7 +11,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #ifndef _PHASE_FIELD_RIGHT_HAND_SIDE_H
 #define _PHASE_FIELD_RIGHT_HAND_SIDE_H
 #include "grid.h"
-#include "structure_df.h"
+#include "stack_and_level.h"
 
 //------------------- Compute the new fd dure to the change of H
 void fd_h(Stack* U, griddouble & fd, const griddouble & H, const int l);

@@ -7,8 +7,10 @@ Author : Xiaodong LIU  xiaodong.liu@cnrs.fr
 Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 =========================================================================*/
-#ifndef _STRUCTURE_DF_H
-#define _STRUCTURE_DF_H
+#ifndef _STACK_AND_LEVEL_H
+#define _STACK_AND_LEVEL_H
+
+#include <cstdlib>  // For free()
 
 typedef struct
 {
@@ -36,39 +38,11 @@ typedef struct
 	Level  *Ll ;            /// array of grid levels
 } Stack;
 
-//imput for image
-typedef struct
-{
- int coefxa;            ///begin of domain in X, start by 0
- int coefxb;			///end of domain in X, start by 0
- int coefya;			///begin of domain in Y, start by 0
- int coefyb;			///end of domain in Y, start by 0
- int coefza;			///begin of domain in Z, start by 0
- int coefzb;			///end of domain in Z, start by 0
- int voxelnx;            ///NB of voxels in image on X
- int voxelny;				///NB of voxels in image on Y
- int voxelnz;				///NB of voxels in image on Z
-} inputdomain;
+// Inline function to free memory of Stack
+inline void finalize(Stack* U) {
+    /// Free memory at the end of the program
+    free(U->Ll);
+}
 
-//Material property
-typedef struct
-{
-	 double E_C; 				/// Young modulus of inclusion
-	 double E_F; 				/// Young modulus of matrix
-	 double nuC; 				/// Poisson ratio  of inclusion
-	 double nuF; 				/// Poisson ratio of matrix
-	 double gc_C;				/// gc of inclusion
-	 double gc_F;				/// gc of matrix
-	 double gc_interface;
-} Material_property;
-
-typedef struct
-{
-	int nu0;             /// mesh size x
-	int nu1;             /// mesh size y
-	int nu2;			   /// mesh size z
-	int gamma;             /// number of nodes x
-	int ncy;             /// number of nodes y
-} MG;
 
 #endif

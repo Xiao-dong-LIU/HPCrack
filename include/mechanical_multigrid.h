@@ -12,7 +12,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include "mg.h"
 #include "mgvec.h"
 #include "mpi_struct.h"
-#include "structure_df.h"
+#include "stack_and_level.h"
 
 ///------------MULTIGRID DRIVING ROUTINES------------///
 

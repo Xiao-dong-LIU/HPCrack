@@ -11,7 +11,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #define _CRACK_PROPAGATION_H
 
 #include "mg.h"
-#include "structure_df.h"
+#include "stack_and_level.h"
 #include "mpi_struct.h"
 #include "configuration.h"
 //------------ the phase field method 

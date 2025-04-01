@@ -14,7 +14,8 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 #include <vector>
 #include <string>
 #include <fstream>
-#include "structure_df.h"
+#include "roi_setting.h"
+#include "mg.h"
 
 using namespace std;
 

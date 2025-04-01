@@ -9,13 +9,14 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 =========================================================================*/
 #ifndef _IMAGE_INPUT_H
 #define _IMAGE_INPUT_H
-#include "grid2d.h"
 #include "iostream"
 #include "grid.h"
 #include "mg.h"
 #include "mpi_struct.h"
 #include "configuration.h"
+#include "roi_setting.h"
 using namespace std;
+
 
 
 void input_setting(inputdomain & IDM, vector <int> const& element_nb, const int maxlevel);

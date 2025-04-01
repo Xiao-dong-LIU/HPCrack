@@ -12,7 +12,7 @@ Institut de Recherche en Génie Civil et Mécanique (GeM) UMR6183
 
 #include "gdvec.h"
 #include "mpi_struct.h"
-#include "structure_df.h"
+#include "stack_and_level.h"
 
 // ----- nodal externe force 
 void externe_force_nodal(Stack *U, gdvecdouble & fu, gdvecdouble & u, const gridshort & MP_choice_d, 
